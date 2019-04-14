@@ -11,9 +11,17 @@ import static org.junit.Assert.*;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
-public class ExampleUnitTest {
+public abstract class ExampleUnitTest {
+
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public abstract void runTest();
+    public void log(String ss){
+        System.out.println(ss);
+    }
+    public void log(Long l){
+        log(String.valueOf(l));
+    }
+    public void log(Integer i){
+        log(String.valueOf(i));
     }
 }

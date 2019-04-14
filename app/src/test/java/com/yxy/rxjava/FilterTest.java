@@ -15,7 +15,7 @@ import rx.schedulers.Schedulers;
  * Created by YXY
  * on 2019/4/7
  */
-public class FilterTest {
+public class FilterTest extends ExampleUnitTest{
     /**
      * 1.debounce FIXME
      */
@@ -44,7 +44,7 @@ public class FilterTest {
                 .subscribe(new Action1<Integer>() {
                     @Override
                     public void call(Integer integer) {
-                        System.out.println("throttleWithTimeout: " + integer);
+                        log("throttleWithTimeout: " + integer);
                     }
                 });
 
@@ -57,7 +57,7 @@ public class FilterTest {
                 }).subscribe(new Action1<Long>() {
             @Override
             public void call(Long aLong) {
-                System.out.println("debounce: " + aLong);
+                log("debounce: " + aLong);
             }
         });
     }
@@ -71,7 +71,7 @@ public class FilterTest {
                 .subscribe(new Action1<Integer>() {
                     @Override
                     public void call(Integer integer) {
-                        System.out.println("distinct: "+ integer);
+                        log("distinct: "+ integer);
                     }
                 });
         Observable.just(1,2,3,3,3,1,2)
@@ -79,7 +79,7 @@ public class FilterTest {
                 .subscribe(new Action1<Integer>() {
                     @Override
                     public void call(Integer integer) {
-                        System.out.println("untilchanged: "+ integer);
+                        log("untilchanged: "+ integer);
                     }
                 });
     }
@@ -93,7 +93,7 @@ public class FilterTest {
                 .subscribe(new Action1<Integer>() {
                     @Override
                     public void call(Integer integer) {
-                        System.out.println("elementAt: "+ integer);
+                        log("elementAt: "+ integer);
                     }
                 });
     }
@@ -111,7 +111,7 @@ public class FilterTest {
                 }).subscribe(new Action1<Integer>() {
             @Override
             public void call(Integer integer) {
-                System.out.println("Filter: "+ integer);
+                log("Filter: "+ integer);
             }
         });
     }
@@ -129,7 +129,7 @@ public class FilterTest {
                 }).subscribe(new Action1<Integer>() {
             @Override
             public void call(Integer integer) {
-                System.out.println("First: " + integer);
+                log("First: " + integer);
             }
         });
         int result = Observable.just(3,4,5,6,7)
@@ -140,7 +140,7 @@ public class FilterTest {
                         return integer > 4;
                     }
                 });
-        System.out.println("blocking: "+ result);
+        log("blocking: "+ result);
     }
 
     /**
@@ -152,7 +152,7 @@ public class FilterTest {
                 .subscribe(new Action1<Integer>() {
                     @Override
                     public void call(Integer integer) {
-                        System.out.println("skip: "+ integer);
+                        log("skip: "+ integer);
                     }
                 });
         Observable.just(2,3,4,5,6)
@@ -160,7 +160,7 @@ public class FilterTest {
                 .subscribe(new Action1<Integer>() {
                     @Override
                     public void call(Integer integer) {
-                        System.out.println("take: "+ integer);
+                        log("take: "+ integer);
                     }
                 });
     }
@@ -174,7 +174,7 @@ public class FilterTest {
                 .subscribe(new Action1<Long>() {
                     @Override
                     public void call(Long aLong) {
-                        System.out.println("sample: "+ aLong);
+                        log("sample: "+ aLong);
                     }
                 });
 
@@ -183,7 +183,7 @@ public class FilterTest {
                 .subscribe(new Action1<Long>() {
                     @Override
                     public void call(Long aLong) {
-                        System.out.println("throttleFirst: "+ aLong);
+                        log("throttleFirst: "+ aLong);
                     }
                 });
 

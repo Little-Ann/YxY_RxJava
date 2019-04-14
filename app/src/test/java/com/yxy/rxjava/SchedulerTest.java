@@ -21,13 +21,13 @@ import rx.schedulers.Schedulers;
  * Created by YXY
  * on 2019/4/7
  */
-public class SchedulerTest {
+public class SchedulerTest extends ExampleUnitTest{
     private void scheduler() {
         Observable
                 .create(new Observable.OnSubscribe<Integer>() {
                     @Override
                     public void call(Subscriber<? super Integer> subscriber) {
-                        System.out.println("start:" + Thread.currentThread().getName());
+                        log("start:" + Thread.currentThread().getName());
                         subscriber.onNext(1);
                         subscriber.onCompleted();
                     }
@@ -36,7 +36,7 @@ public class SchedulerTest {
                 .map(new Func1<Integer, Integer>() {
                     @Override
                     public Integer call(Integer integer) {
-                        System.out.println(integer + ":" + Thread.currentThread().getName());
+                        log(integer + ":" + Thread.currentThread().getName());
                         return integer + 1;
                     }
                 })
@@ -44,7 +44,7 @@ public class SchedulerTest {
                 .map(new Func1<Integer, Integer>() {
                     @Override
                     public Integer call(Integer integer) {
-                        System.out.println(integer + ":" + Thread.currentThread().getName());
+                        log(integer + ":" + Thread.currentThread().getName());
                         return integer + 1;
                     }
                 })
@@ -52,7 +52,7 @@ public class SchedulerTest {
                 .subscribe(new Action1<Integer>() {
                     @Override
                     public void call(Integer integer) {
-                        System.out.println("action: " + Thread.currentThread().getName());
+                        log("action: " + Thread.currentThread().getName());
                     }
                 });
     }
@@ -81,7 +81,7 @@ public class SchedulerTest {
                 .subscribe(new Action1<Long>() {
                     @Override
                     public void call(Long aLong) {
-                        System.out.println(aLong + "-" + Thread.currentThread().getName());
+                        log(aLong + "-" + Thread.currentThread().getName());
                     }
                 });
     }
