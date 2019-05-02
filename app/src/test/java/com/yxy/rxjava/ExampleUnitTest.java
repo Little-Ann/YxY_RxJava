@@ -24,4 +24,7 @@ public abstract class ExampleUnitTest {
     public void log(Integer i){
         log(String.valueOf(i));
     }
+    public long getCurrentTime(){
+        return System.currentTimeMillis()/1000;
+    }
 }
